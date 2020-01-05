@@ -8,17 +8,22 @@ namespace WindowsGames.Games
 {
     public partial class TicTacToe : Form
     {
-        private bool _isCross = true;
-        private Move[,] moves = new Move[3, 3];
-        private bool finished = false;
-        private int turns = 1;
-        private int xscore = 0;
-        private int oscore = 0;
+        private bool _isCross { get; set; }
+        private int turnFlag { get; set; }
+        private PlayMove[,] moves = new PlayMove[3, 3];
+        private bool finished { get; set; }
+        private int turns { get; set; }
+        private int xscore { get; set; }
+        private int oscore { get; set; }
 
         public TicTacToe()
         {
             InitializeComponent();
             ResetGame();
+            turnFlag = 1;
+            turns = 1;
+            xscore = 0;
+            oscore = 0;
         }
 
         public enum Symbole
@@ -29,7 +34,7 @@ namespace WindowsGames.Games
             Draw
         }
 
-        public class Move
+        public class PlayMove
         {
             public Symbole Symbole { get; set; }
             public Tuple<int, int> Position { get; set; }
@@ -43,10 +48,11 @@ namespace WindowsGames.Games
             {
                 for (int j = 0; j < 3; j++)
                 {
-                    moves.SetValue(new Move { Symbole = Symbole.Blank, Position = new Tuple<int, int>(i, j) }, i, j);
+                    moves.SetValue(new PlayMove { Symbole = Symbole.Blank, Position = new Tuple<int, int>(i, j) }, i, j);
                 }
             }
-            _isCross = true;
+            turnFlag++;
+            _isCross = turnFlag % 2 == 0;
             turns = 1;
             cell1.Image = null;
             cell2.Image = null;
@@ -72,13 +78,12 @@ namespace WindowsGames.Games
                 var image = _isCross ? Resource.cross : Resource.circle;
                 clickedCell.Image = image;
                 var cellPosition = GetCellPosition(clickedCell.Name);
-                var move = (Move)moves.GetValue(cellPosition.Item1, cellPosition.Item2);
+                var move = (PlayMove)moves.GetValue(cellPosition.Item1, cellPosition.Item2);
                 if (move.Symbole == Symbole.Blank)
                 {
                     move.Symbole = _isCross ? Symbole.Cross : Symbole.Circle;
-                    finished = PlayMove(move, UserAction);
+                    finished = PlayMoveAction(move, UserAction);
                     _isCross = !_isCross;
-                    turns++;
                 }
                 if (turns > 9 && !finished)
                 {
@@ -96,9 +101,10 @@ namespace WindowsGames.Games
             MessageBoxButtons buttons = MessageBoxButtons.YesNo;
             DialogResult result;
             result = MessageBox.Show(message, caption, buttons);
-            if (result == System.Windows.Forms.DialogResult.No)
+            if (result == System.Windows.Forms.DialogResult.Yes)
+                ResetGame();
+            else
                 this.Close();
-            ResetGame();
         }
 
         private Tuple<int, int> GetCellPosition(string name)
@@ -125,7 +131,7 @@ namespace WindowsGames.Games
                 return null;
         }
 
-        private bool PlayMove(Move move, UserActionDelegate userActionDelegate)
+        private bool PlayMoveAction(PlayMove move, UserActionDelegate userActionDelegate)
         {
             bool gameover = false;
             moves.SetValue(move, move.Position.Item1, move.Position.Item2);
@@ -143,6 +149,7 @@ namespace WindowsGames.Games
                     break;
                 default:
                     gameover = false;
+                    turns++;
                     break;
             }
             return gameover;
