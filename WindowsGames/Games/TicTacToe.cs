@@ -9,7 +9,7 @@ namespace WindowsGames.Games
     public partial class TicTacToe : Form
     {
         private bool _isCross { get; set; }
-        private int turnFlag { get; set; }
+        private Symbole firstmove { get; set; }
         private PlayMove[,] moves = new PlayMove[3, 3];
         private bool finished { get; set; }
         private int turns { get; set; }
@@ -19,11 +19,10 @@ namespace WindowsGames.Games
         public TicTacToe()
         {
             InitializeComponent();
-            ResetGame();
-            turnFlag = 1;
-            turns = 1;
             xscore = 0;
             oscore = 0;
+            firstmove = Symbole.Circle;
+            ResetGame();
         }
 
         public enum Symbole
@@ -51,8 +50,7 @@ namespace WindowsGames.Games
                     moves.SetValue(new PlayMove { Symbole = Symbole.Blank, Position = new Tuple<int, int>(i, j) }, i, j);
                 }
             }
-            turnFlag++;
-            _isCross = turnFlag % 2 == 0;
+            firstmove = firstmove == Symbole.Cross ? Symbole.Circle : Symbole.Cross;
             turns = 1;
             cell1.Image = null;
             cell2.Image = null;
@@ -75,6 +73,7 @@ namespace WindowsGames.Games
             var clickedCell = sender as PictureBox;
             if (clickedCell.Image == null)
             {
+                _isCross = turns == 1 ? (firstmove == Symbole.Cross) : _isCross;
                 var image = _isCross ? Resource.cross : Resource.circle;
                 clickedCell.Image = image;
                 var cellPosition = GetCellPosition(clickedCell.Name);
