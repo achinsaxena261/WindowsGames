@@ -30,15 +30,15 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainForm));
             this.gamesLayoutPanel = new System.Windows.Forms.TableLayoutPanel();
-            this.button9 = new System.Windows.Forms.Button();
-            this.button8 = new System.Windows.Forms.Button();
             this.button6 = new System.Windows.Forms.Button();
             this.button5 = new System.Windows.Forms.Button();
             this.button4 = new System.Windows.Forms.Button();
             this.button3 = new System.Windows.Forms.Button();
-            this.button2 = new System.Windows.Forms.Button();
+            this.carRacing = new System.Windows.Forms.Button();
             this.tictactoe = new System.Windows.Forms.Button();
             this.button7 = new System.Windows.Forms.Button();
+            this.button9 = new System.Windows.Forms.Button();
+            this.button8 = new System.Windows.Forms.Button();
             this.gamesLayoutPanel.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -52,7 +52,7 @@
             this.gamesLayoutPanel.Controls.Add(this.button5, 1, 1);
             this.gamesLayoutPanel.Controls.Add(this.button4, 0, 1);
             this.gamesLayoutPanel.Controls.Add(this.button3, 2, 0);
-            this.gamesLayoutPanel.Controls.Add(this.button2, 1, 0);
+            this.gamesLayoutPanel.Controls.Add(this.carRacing, 1, 0);
             this.gamesLayoutPanel.Controls.Add(this.tictactoe, 0, 0);
             this.gamesLayoutPanel.Controls.Add(this.button7, 0, 2);
             this.gamesLayoutPanel.Controls.Add(this.button9, 2, 2);
@@ -66,24 +66,9 @@
             this.gamesLayoutPanel.Size = new System.Drawing.Size(439, 402);
             this.gamesLayoutPanel.TabIndex = 0;
             // 
-            // button9
-            // 
-            this.button9.Location = new System.Drawing.Point(303, 276);
-            this.button9.Name = "button9";
-            this.button9.Size = new System.Drawing.Size(133, 123);
-            this.button9.TabIndex = 8;
-            this.button9.UseVisualStyleBackColor = true;
-            // 
-            // button8
-            // 
-            this.button8.Location = new System.Drawing.Point(152, 276);
-            this.button8.Name = "button8";
-            this.button8.Size = new System.Drawing.Size(145, 123);
-            this.button8.TabIndex = 7;
-            this.button8.UseVisualStyleBackColor = true;
-            // 
             // button6
             // 
+            this.button6.Enabled = false;
             this.button6.Location = new System.Drawing.Point(303, 138);
             this.button6.Name = "button6";
             this.button6.Size = new System.Drawing.Size(133, 132);
@@ -92,6 +77,7 @@
             // 
             // button5
             // 
+            this.button5.Enabled = false;
             this.button5.Location = new System.Drawing.Point(152, 138);
             this.button5.Name = "button5";
             this.button5.Size = new System.Drawing.Size(145, 132);
@@ -100,6 +86,7 @@
             // 
             // button4
             // 
+            this.button4.Enabled = false;
             this.button4.Location = new System.Drawing.Point(3, 138);
             this.button4.Name = "button4";
             this.button4.Size = new System.Drawing.Size(143, 132);
@@ -108,19 +95,24 @@
             // 
             // button3
             // 
+            this.button3.Enabled = false;
             this.button3.Location = new System.Drawing.Point(303, 3);
             this.button3.Name = "button3";
             this.button3.Size = new System.Drawing.Size(133, 129);
             this.button3.TabIndex = 2;
             this.button3.UseVisualStyleBackColor = true;
             // 
-            // button2
+            // carRacing
             // 
-            this.button2.Location = new System.Drawing.Point(152, 3);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(145, 129);
-            this.button2.TabIndex = 1;
-            this.button2.UseVisualStyleBackColor = true;
+            this.carRacing.BackColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.carRacing.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
+            this.carRacing.Enabled = false;
+            this.carRacing.Image = ((System.Drawing.Image)(resources.GetObject("carRacing.Image")));
+            this.carRacing.Location = new System.Drawing.Point(152, 3);
+            this.carRacing.Name = "carRacing";
+            this.carRacing.Size = new System.Drawing.Size(145, 129);
+            this.carRacing.TabIndex = 1;
+            this.carRacing.UseVisualStyleBackColor = false;
             // 
             // tictactoe
             // 
@@ -136,11 +128,30 @@
             // 
             // button7
             // 
+            this.button7.Enabled = false;
             this.button7.Location = new System.Drawing.Point(3, 276);
             this.button7.Name = "button7";
             this.button7.Size = new System.Drawing.Size(143, 123);
             this.button7.TabIndex = 6;
             this.button7.UseVisualStyleBackColor = true;
+            // 
+            // button9
+            // 
+            this.button9.Enabled = false;
+            this.button9.Location = new System.Drawing.Point(303, 276);
+            this.button9.Name = "button9";
+            this.button9.Size = new System.Drawing.Size(133, 123);
+            this.button9.TabIndex = 8;
+            this.button9.UseVisualStyleBackColor = true;
+            // 
+            // button8
+            // 
+            this.button8.Enabled = false;
+            this.button8.Location = new System.Drawing.Point(152, 276);
+            this.button8.Name = "button8";
+            this.button8.Size = new System.Drawing.Size(145, 123);
+            this.button8.TabIndex = 7;
+            this.button8.UseVisualStyleBackColor = true;
             // 
             // MainForm
             // 
@@ -170,7 +181,7 @@
         private System.Windows.Forms.Button button5;
         private System.Windows.Forms.Button button4;
         private System.Windows.Forms.Button button3;
-        private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.Button carRacing;
         private System.Windows.Forms.Button tictactoe;
         private System.Windows.Forms.Button button7;
     }

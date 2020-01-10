@@ -16,7 +16,6 @@ namespace WindowsGames.Games
         private int xscore { get; set; }
         private int oscore { get; set; }
         private SoundPlayer player;
-        private readonly string clickSoundPath;
         public TicTacToe()
         {
             InitializeComponent();
@@ -24,8 +23,7 @@ namespace WindowsGames.Games
             oscore = 0;
             firstmove = Symbole.Circle;
             ResetGame();
-            clickSoundPath = Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location) + "/../../Sounds/Click.wav";
-            player = new SoundPlayer(clickSoundPath);
+            player = new SoundPlayer(Resource.Click);
         }
 
         public enum Symbole
