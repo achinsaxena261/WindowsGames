@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Windows.Forms;
+using System.Media;
 using System.Reflection;
-using System.Drawing;
 using System.IO;
 
 namespace WindowsGames.Games
@@ -14,11 +14,14 @@ namespace WindowsGames.Games
         private int turns = 1;
         private int xscore = 0;
         private int oscore = 0;
-
+        private SoundPlayer player;
+        private readonly string clickSoundPath; 
         public TicTacToe()
         {
             InitializeComponent();
             ResetGame();
+            clickSoundPath = Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location) + "/../../Sounds/Click.wav";
+            player = new SoundPlayer(clickSoundPath);
         }
 
         public enum Symbole
@@ -66,6 +69,8 @@ namespace WindowsGames.Games
 
         private void Cell_Click(object sender, EventArgs e)
         {
+            player.Stop();
+            player.Play();
             var clickedCell = sender as PictureBox;
             if (clickedCell.Image == null)
             {

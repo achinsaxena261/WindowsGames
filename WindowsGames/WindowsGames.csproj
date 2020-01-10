@@ -155,6 +155,9 @@
     <Content Include="Images\TicTacToeLogo.png" />
     <Content Include="Images\tictactoetitle.gif" />
     <Content Include="Images\WinGames.ico" />
+    <Content Include="Sounds\Click.wav">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
     <None Include="Resources\cross.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
