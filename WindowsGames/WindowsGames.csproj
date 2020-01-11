@@ -146,6 +146,8 @@
     </BootstrapperPackage>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Images\cards.png" />
+    <Content Include="Images\checkers.png" />
     <Content Include="Images\circle.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
@@ -153,6 +155,12 @@
     <Content Include="Images\cross.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
+    <Content Include="Images\ladder-snake.png" />
+    <Content Include="Images\match.png" />
+    <Content Include="Images\racing.png" />
+    <Content Include="Images\shooting.png" />
+    <Content Include="Images\snake.png" />
+    <Content Include="Images\sudoku.png" />
     <Content Include="Images\TicTacToeLogo.png" />
     <Content Include="Images\tictactoetitle.gif" />
     <Content Include="Images\WinGames.ico" />
